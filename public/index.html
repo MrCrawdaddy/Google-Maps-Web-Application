@@ -9,21 +9,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- CSS -->
   <link rel="stylesheet" href="/../bower_components/bootstrap/dist/css/bootstrap.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="stylesheets/style.css" />
   <!-- Holder JS -->
-  <script src="/../bower_components/holderjs/holder.js"></script>
+  <script src="../bower_components/holderjs/holder.js"></script>
   <!-- Google Maps API -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDifnvT72jtMTMzR1Dp72vb3rfP7wuch1c"></script>
   <!-- Modernizr -->
-  <script src="/../bower_components/modernizr/bin/modernizr"></script>
+  <script src="../bower_components/modernizr/bin/modernizr"></script>
   <!-- JS Source -->
-  <script src="/../bower_components/jquery/jquery.js"></script>
-  <script src="/../bower_components/angular/angular.js"></script>
-  <script src="/../bower_components/angular-route/angular-route.js"></script>
-  <script src="/../bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+  <script src="../bower_components/jquery/dist/jquery.js"></script>
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="../bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+  <!-- Angular Scripts -->
+  <script src="javascripts/mapApp.js"></script>
+  <script src="javascripts/addCtrl.js"></script>
+  <script src="javascripts/gservice.js"></script>
+
 </head>
 
-<body>
+<body ng-controller="addCtrl">
   <div class="container">
     <div class="header">
       <ul class="nav nav-pills pull-right">
@@ -36,7 +41,7 @@
     <div class="row content">
       <!-- Google Map -->
       <div class="col-md-7">
-        <div id="map"><img src="holder.js/645x645"></div>
+        <div id="map" style="width:645px; height:645px"></div>
       </div>
       <!-- Side Panel -->
       <div class="col-md-5">
@@ -93,7 +98,7 @@
                 <input type="text" class="form-control" id="verified" placeholder="Nope (Thanks for spamming my map...)" ng-model="formData.htmlverified" readonly>
               </div>
               <!-- Submit button. Note that its tied to createUser() function from addCtrl. Also note ng-disabled logic which prevents early submits.  -->
-              <button type="submit" class="btn btn-danger btn-block" ng-disabled="addForm.$invalid">Submit</button>
+              <button type="submit" class="btn btn-danger btn-block" ng-click="createUser()" ng-disabled="addForm.$invalid">Submit</button>
             </form>
           </div>
         </div>
